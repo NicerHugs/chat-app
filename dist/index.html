@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
     <title>chat app</title>
 
-<link rel="icon" type="image/ico" href="/favicon.ico?v3">
+<link rel="icon" type="image/ico" href="/favicon.ico?v4">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
@@ -18,30 +19,55 @@
   </head>
   <body>
 
-    <div class="hero-unit">
-      <h1>'Allo, 'Allo!</h1>
-      <p>You now have</p>
-      <ul>
-        <li>HTML5 Boilerplate</li>
-        <li>Normalize CSS</li>
+    <div class="container">
 
-        <li>Sass</li>
+      <main id="login">
 
+        <section class="welcome">
+          <h2>Welcome to the Chat App!</h2>
+          <p>Please create a username.</p>
+        </section>
 
-        <li>Modernizr</li>
+        <section class="login">
+          <form>
+            <input id="username-field" type="text" placeholder="username">
+            <button type="submit" id="username" href="www.google.com">get chatting!</button>
+          </form>
+        </section>
 
+      </main> <!-- login -->
 
-        <li>Bourbon & Neat</li>
+      <main id="chat-app" class="hidden">
 
+        <section class="chat-list">
+          <ul id="chat-list">
+          </ul>
+        </section>
 
-        <li>UnderscoreJS</li>
+        <section class="chat-form">
+          <form>
+            <input type="text" id='chat-message'>
+            <button type="submit" id='send-chat'><span class="fa fa-comments-o"></span></button>
+          </form>
+        </section>
 
-      </ul>
-      <p>Don't forget to update your readme file!!</p>
-    </div>
+      </main> <!-- chat app -->
+
+    </div><!-- container -->
+
+    <script type='text/template' id='templates-chat-item'>
+      <li>
+        <h3><%= username =%></h3>
+        <div class='chat-data'>
+          <span class='date-time'>(<%= createdAt %>)</span>
+          <span class='message'><%= message %></span>
+        </div>
+      </li>
+    </script>
 
     <script src="scripts/vendor.js"></script>
 
-        <script src="scripts/main.js"></script>
+    <script src="scripts/main.js"></script>
+
 </body>
 </html>
