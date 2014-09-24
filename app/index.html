@@ -1,0 +1,88 @@
+<!doctype html>
+<html class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <title>chat app</title>
+
+<link rel="icon" type="image/ico" href="/favicon.ico?v4">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="../bower_components/normalize-css/normalize.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+
+    <!-- build:js scripts/vendor/modernizr.js -->
+    <script src="../bower_components/modernizr/modernizr.js"></script>
+    <!-- endbuild -->
+  </head>
+  <body>
+
+    <div class="container">
+
+      <main id="login">
+
+        <section class="welcome">
+          <h2>Welcome to the Chat App!</h2>
+          <p>Please create a username.</p>
+        </section>
+
+        <section class="login">
+          <form>
+            <input id="username-field" type="text" placeholder="username">
+            <button type="submit" id="username" href="www.google.com">get chatting!</button>
+          </form>
+        </section>
+
+      </main> <!-- login -->
+
+      <main id="chat-app" class="hidden">
+
+        <section class="chat-list">
+          <ul id="chat-list">
+          </ul>
+        </section>
+
+        <section class="chat-form">
+          <form>
+            <input type="text" id='chat-message'>
+            <button type="submit" id='send-chat'><span class="fa fa-comments-o"></span></button>
+          </form>
+        </section>
+
+      </main> <!-- chat app -->
+
+    </div><!-- container -->
+
+    <script type='text/template' id='templates-chat-item'>
+      <li>
+        <h3><%= username =%></h3>
+        <div class='chat-data'>
+          <span class='date-time'>(<%= createdAt %>)</span>
+          <span class='message'><%= message %></span>
+        </div>
+      </li>
+    </script>
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../bower_components/underscore/underscore.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js scripts/main.js -->
+    <script src="scripts/main.js"></script>
+    <!-- endbuild -->
+
+</body>
+</html>
