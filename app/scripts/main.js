@@ -9,12 +9,10 @@ function renderTemplate(templateId, location, model) {
 }
 
 function buildChatList(chatModel) {
+    chatModel.createdAt = moment(+chatModel.createdAt).fromNow();
     renderTemplate('#templates-chat-item', '#chat-list', chatModel);
     var chatListHeight = $('#chat-list').prop('scrollHeight');
     $('#chat-list').scrollTop(chatListHeight);
-//add function here that puts the scroll at the bottom.
-    //first find out how big the list is
-    //now set scroll top to that size??
 }
 
 function sendChat(e) {
