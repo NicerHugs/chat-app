@@ -61,3 +61,12 @@ $('#username').on('click', function(e){
 $('#send-chat').on('click', function(e){
     sendChat(e);
 });
+
+setInterval(getChats, 10000);
+
+
+
+
+
+
+//
