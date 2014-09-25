@@ -25,10 +25,8 @@ function sendChat(e) {
         type: 'POST',
         data: chatData
     })
-    //add function here that gets only new chats and adds them
     .done(function() {
         getChats();
-        // buildChatList(newChats);
     });
 }
 
@@ -47,6 +45,7 @@ function makeChatModel(chatData) {
     var filterByNew = _.filter(dateSorted, function(chat) {
         return chat.createdAt >= lastUpdated;
     });
+    lastUpdated = Date.now();
     var chatModel = filterByNew.slice(0, 19);
     _.each(chatModel, buildChatList);
 }
@@ -57,10 +56,8 @@ $('#username').on('click', function(e){
     $('#chat-app').removeClass('hidden');
     $('#chat-message').attr('username', $('#username-field').val());
     getChats();
-    // lastUpdated = Date.now();
 });
 
 $('#send-chat').on('click', function(e){
-    lastUpdated = Date.now();
     sendChat(e);
 });
