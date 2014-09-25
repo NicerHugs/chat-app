@@ -51,7 +51,7 @@ function makeChatModel(chatData) {
         return chat.createdAt >= lastUpdated;
     });
     lastUpdated = Date.now();
-    var chatModel = filterByNew.slice(0, 19);
+    var chatModel = filterByNew.slice(filterByNew.length-20, filterByNew.length);
     _.each(chatModel, buildChatList);
 }
 
