@@ -62,7 +62,7 @@ $('#send-chat').on('click', function(e){
     sendChat(e);
 });
 
-setInterval(getChats, 10000);
+setInterval(getChats, 1000);
 
 
 

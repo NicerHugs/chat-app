@@ -67,6 +67,8 @@ main {
       bottom: 30px;
       position: absolute;
       min-height: 30px;
+      max-height: 467px;
+      overflow: scroll;
       width: 100%
     }
 
