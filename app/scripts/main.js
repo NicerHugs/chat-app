@@ -1,5 +1,5 @@
 var serverURL = '//tiny-pizza-server.herokuapp.com/collections/NicerHugs-chat-app',
-    lastUpdated = null;
+    lastUpdated = 1411527859463;
 
 function renderTemplate(templateId, location, model) {
     var templateString = $(templateId).text();
@@ -16,15 +16,19 @@ function sendChat(e) {
     e.preventDefault();
     var chatData =  {
         username: $('#chat-message').attr('username'),
-        createdAt: new Date.now(),
+        createdAt: Date.now(),
         message: $('#chat-message').val(),
     };
-    lastUpdated = chatData.createdAt;
     $('#chat-message').val("");
     $.ajax({
         url: serverURL,
         type: 'POST',
         data: chatData
+    })
+    //add function here that gets only new chats and adds them
+    .done(function() {
+        getChats();
+        // buildChatList(newChats);
     });
 }
 
@@ -40,16 +44,23 @@ function makeChatModel(chatData) {
     var dateSorted = _.sortBy(chatData, function(chat) {
         return chat.createdAt;
     });
-    var chatModel = dateSorted.slice(0, 19);
+    var filterByNew = _.filter(dateSorted, function(chat) {
+        return chat.createdAt >= lastUpdated;
+    });
+    var chatModel = filterByNew.slice(0, 19);
     _.each(chatModel, buildChatList);
 }
 
 $('#username').on('click', function(e){
-  e.preventDefault();
-  $('#login').addClass('hidden');
-  $('#chat-app').removeClass('hidden');
-  $('#chat-message').attr('username', $('#username-field').val());
-  getChats();
+    e.preventDefault();
+    $('#login').addClass('hidden');
+    $('#chat-app').removeClass('hidden');
+    $('#chat-message').attr('username', $('#username-field').val());
+    getChats();
+    // lastUpdated = Date.now();
 });
 
-$('#send-chat').on('click', sendChat);
+$('#send-chat').on('click', function(e){
+    lastUpdated = Date.now();
+    sendChat(e);
+});
